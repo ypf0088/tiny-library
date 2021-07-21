@@ -2,7 +2,7 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-21 09:51:15
- * @LastEditTime: 2021-07-21 16:50:31
+ * @LastEditTime: 2021-07-21 17:23:40
  * @FilePath: /packages/reader/gulpfile.js
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
@@ -15,6 +15,7 @@ const gulpFileInclude = require('gulp-file-include');
 const sass = require('sass');
 const gulpSass = require('gulp-sass')(sass);
 const gulpAutoprefixer = require('gulp-autoprefixer');
+const gulpConnect = require('gulp-connect');
 const webpack = require('webpack');
 
 //项目信息
@@ -47,9 +48,9 @@ const html = done => {
                 prefix: '@@', //变量前缀 @@include
                 basepath: 'src/html', //引用文件路径
                 indent: true, //保留文件的缩进
-                // context : {
-                //     projectInfo
-                // }
+                context: {
+                    projectInfo,
+                },
             }),
         )
         .pipe(dest(path.join(projectInfo.output, 'html')));
@@ -58,9 +59,7 @@ const html = done => {
 // js 任务
 const js = done => {
     webpack(webpackConfig).run(function (err, status) {
-        console.group('webpack-run');
         console.log(status.toString());
-        console.groupEnd();
         done();
     });
 };
@@ -80,11 +79,38 @@ const css = done => {
         .pipe(dest(path.join(projectInfo.output, 'css')));
 };
 
+// 重新加载
+const reload = done => {
+    if (projectInfo.mode !== 'production') {
+        return src(path.join(projectInfo.output)).pipe(gulpConnect.reload());
+    }
+    done();
+};
+
 // 通用任务
-const task = series(clean, parallel(html, css, js));
+const task = series(clean, parallel(html, css, js), reload);
+
+// connect
+const connect = done => {
+    if (projectInfo.mode == 'development') {
+        gulpConnect.server({
+            // host:'10.2.47.190',
+            root: 'dist',
+            port: 63999,
+            livereload: true,
+            index: false,
+            middleware: (connect, opt) => {
+                let c = require('child_process');
+                c.exec('start ' + 'http://' + opt.host + ':' + opt.port);
+                return [];
+            },
+        });
+    }
+    done();
+};
 
 // 默认任务集
-const defaultTask = series(task, done => {
+const defaultTask = series(task, connect, done => {
     if (projectInfo.mode === 'development') {
         const watcher = watch(['src/**']);
         watcher.on('all', (staus, file) => {

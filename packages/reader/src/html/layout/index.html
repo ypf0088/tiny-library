@@ -10,6 +10,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <!--外链css-->
         @@if(pageInfo.outerCss){@@include('@@pageInfo.outerCss')}
+        <!--css引入-->
+        <link href="../css/@@pageInfo.name.css?v=@@projectInfo.version" rel="stylesheet" type="text/css" />
     </head>
-    <body></body>
+    <body>
+        <!--页面内容-->
+        <div class="dl-container-board">@@if(pageInfo.url){ @@include('@@pageInfo.url') }</div>
+    </body>
+    <!--外链js-->
+    @@if(pageInfo.outerScript){ @@include('@@pageInfo.outerScript') }
+    <!--页面js-->
+    <script type="text/javascript" src="../js/@@pageInfo.name.js?v=@@projectInfo.version"></script>
+    <!--内链js-->
+    @@if(pageInfo.innerScript){ @@include('@@pageInfo.innerScript') }
 </html>
