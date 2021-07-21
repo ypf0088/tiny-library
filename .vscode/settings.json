@@ -56,6 +56,13 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     // 自动生成文件头 & 函数注释
+    "fileheader.configObj": {
+        "folderBlacklist": [
+            "node_modules",
+            "**/*.html",
+            "**/bin/**"
+        ],
+    },
     "fileheader.customMade": {
         "Author": "yourname",
         "LastEditors": "Please set LastEditors",

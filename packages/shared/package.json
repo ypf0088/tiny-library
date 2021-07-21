@@ -1,6 +1,11 @@
 {
-  "name": "shared",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+    "name": "@tiny/shared",
+    "version": "1.0.0",
+    "main": "index.js",
+    "bugs": {
+        "url": "https://github.com/ypf0088/tiny-library/issues"
+    },
+    "homepage": "https://github.com/ypf0088/tiny-library/tree/master/packages/shared#readme",
+    "devDependencies": {},
+    "license": "MIT"
 }

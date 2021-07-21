@@ -11,7 +11,9 @@
     "scripts": {
         "build": "tsc --watch",
         "test": "jest",
-        "test:c": "jest --coverage"
+        "test:c": "jest --coverage",
+        "reader:run": "tiny-reader mode:development",
+        "reader:build": "tiny-reader mode:production"
     },
     "devDependencies": {
         "@types/jest": "^26.0.24",

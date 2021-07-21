@@ -73,7 +73,7 @@
     "baseUrl": ".",
     "outDir": "dist",
     "target": "ES5",
-    "module": "amd",
+    "module": "esnext",
     "moduleResolution": "node",
     "allowJs": false,
     "strict": true,

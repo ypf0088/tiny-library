@@ -2,8 +2,8 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-20 23:33:48
- * @LastEditTime: 2021-07-20 23:45:50
- * @FilePath: /packages/utils/src/file.ts
+ * @LastEditTime: 2021-07-21 14:38:50
+ * @FilePath: /packages/utils/src/file/upload.ts
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
  */
