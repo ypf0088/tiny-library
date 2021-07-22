@@ -2,7 +2,7 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-22 10:42:58
- * @LastEditTime: 2021-07-22 14:11:29
+ * @LastEditTime: 2021-07-22 14:38:31
  * @FilePath: /rollup.config.js
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
@@ -41,7 +41,7 @@ const packageConfigs = defaultFormats.map(format =>
     Object.assign({}, commonConf, {
         input: resolve('src/index.ts'),
         output: {
-            file: resolve(`dist/${TARGET}-${format}.js`),
+            file: resolve(`dist/tiny-${TARGET}.${format}.js`),
             format: format,
             name: `Tiny${TARGET}`,
         },
