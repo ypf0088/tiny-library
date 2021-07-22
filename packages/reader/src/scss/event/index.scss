@@ -1,0 +1,15 @@
+@mixin dragBox{
+    .drag-source-box{
+        .drag-source{
+            @content;
+        }
+    }
+};
+
+@mixin dragTarget {
+    .drag-target-box{
+        .drag-target{
+            @content;
+        }
+    }
+};

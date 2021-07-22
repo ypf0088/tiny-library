@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="ch">
     <head>
         <meta charset="UTF-8" />
         <title>@@if(pageInfo.title) {@@pageInfo.title}</title>
@@ -13,7 +13,7 @@
         <!--css引入-->
         <link href="../css/@@pageInfo.name.css?v=@@projectInfo.version" rel="stylesheet" type="text/css" />
     </head>
-    <body>
+    <body data-page="dl-@@pageInfo.name-page" class="dl-@@pageInfo.name-page">
         <!--页面内容-->
         <div class="dl-container-board">@@if(pageInfo.url){ @@include('@@pageInfo.url') }</div>
     </body>
