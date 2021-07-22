@@ -7,5 +7,6 @@
     },
     "homepage": "https://github.com/ypf0088/tiny-library/tree/master/packages/utils#readme",
     "devDependencies": {},
+    "buildOptions": {},
     "license": "MIT"
 }

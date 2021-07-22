@@ -9,7 +9,8 @@
     "repository": "https://github.com/ypf0088/tiny-library.git",
     "author": "plusy88 <ypf0088@gmail.com>",
     "scripts": {
-        "build": "tsc --watch",
+        "build": "node script/build.js",
+        "tsc:w": "tsc --watch",
         "test": "jest",
         "test:c": "jest --coverage",
         "reader:run": "tiny-reader mode:development",
@@ -17,7 +18,10 @@
     },
     "devDependencies": {
         "@types/jest": "^26.0.24",
+        "execa": "^5.1.1",
         "jest": "^27.0.6",
+        "rollup": "^2.53.3",
+        "rollup-plugin-typescript2": "^0.30.0",
         "stylelint": "^13.13.1",
         "stylelint-config-prettier": "^8.0.2",
         "stylelint-config-standard": "^22.0.0",
