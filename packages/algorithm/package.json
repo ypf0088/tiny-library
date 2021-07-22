@@ -1,0 +1,12 @@
+{
+  "name": "@tiny/algorithm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bugs": {
+      "url": "https://github.com/ypf0088/tiny-library/issues"
+  },
+  "homepage": "https://github.com/ypf0088/tiny-library/tree/master/packages/algorithm#readme",
+  "devDependencies": {},
+  "buildOptions": {},
+  "license": "MIT"
+}
