@@ -2,7 +2,7 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-22 22:25:08
- * @LastEditTime: 2021-07-22 23:48:11
+ * @LastEditTime: 2021-07-23 10:07:37
  * @FilePath: /packages/algorithm/src/data-structure/list/doubly-linked-list.ts
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
@@ -62,6 +62,35 @@ export class DoublyLinkedList<T> {
     }
 
     delete({ node, value }: { node?: DoublyLinkedListNode<T> | null; value?: T }) {
+        node = node ?? this.find(value);
+        // 节点不存在、链表为空，直接返回
+        if (!node || !this.head) return this;
+
+        const preNode = node.prev;
+        const nextNode = node.next;
+
+        // 如果前节点不存在，表示找到的就是头节点
+        if (!preNode) {
+            if (!nextNode) {
+                this.head = this.last = null;
+            } else {
+                nextNode.prev = null;
+                this.head = nextNode;
+            }
+            return this;
+        }
+
+        // 如果后节点不存在，表示找到的就是尾节点
+        if (!nextNode) {
+            preNode.next = null;
+            this.last = preNode;
+            return this;
+        }
+
+        // 如果两个节点都存在
+        preNode.next = nextNode;
+        nextNode.prev = preNode;
+        return this;
     }
 
     find(value?: T) {
