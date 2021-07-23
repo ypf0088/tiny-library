@@ -2,7 +2,7 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-22 17:37:27
- * @LastEditTime: 2021-07-23 10:08:56
+ * @LastEditTime: 2021-07-23 16:37:23
  * @FilePath: /packages/algorithm/__tests__/data-structure/list.test.ts
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
@@ -77,7 +77,5 @@ describe('algorithm/data-structure/doubly-linked-list', () => {
         expect(list.delete({ value: 1244 }).toString()).toBe('[true,true,{"name":"小明"},12]');
         // 非空链表，删除存在的node
         expect(list.delete({ node: node1 }).toString()).toBe('[true,true,{"name":"小明"}]');
-        // list.insert(new SingleLinkedListNode(true), '1234');
-        // console.log(list.delete({ value: 12 }).toString());
     });
 });
