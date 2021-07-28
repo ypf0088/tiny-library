@@ -2,13 +2,13 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-20 23:33:48
- * @LastEditTime: 2021-07-28 17:11:12
+ * @LastEditTime: 2021-07-28 18:17:26
  * @FilePath: /packages/utils/src/file/upload-download.ts
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
  */
 
-const cssText: string = `visibility: hidden; height: 0px; z-index: -9999;`;
+import { hideDomCssText as cssText } from '../public';
 
 /**
  * @Author: yourname
