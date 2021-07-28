@@ -2,7 +2,7 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-21 09:51:15
- * @LastEditTime: 2021-07-28 18:05:09
+ * @LastEditTime: 2021-07-28 21:21:56
  * @FilePath: /packages/reader/gulpfile.js
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
@@ -87,6 +87,22 @@ const reload = done => {
     done();
 };
 
+// 获取host地址
+const getIPAddress = () => {
+    const interfaces = require('os').networkInterfaces();
+    let ip;
+    Object.keys(interfaces).find(key => {
+        const iface = interfaces[key];
+        for (let i = 0; i < iface.length; i++) {
+            var alias = iface[i];
+            if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+                ip = alias.address;
+                return true;
+            }
+        }
+    });
+    return ip || '0.0.0.0';
+};
 // 通用任务
 const task = series(clean, parallel(html, css, js), reload);
 
@@ -94,7 +110,7 @@ const task = series(clean, parallel(html, css, js), reload);
 const connect = done => {
     if (projectInfo.mode == 'development') {
         gulpConnect.server({
-            host:'10.10.49.28',
+            host: getIPAddress(),
             root: 'dist',
             port: 63999,
             livereload: true,

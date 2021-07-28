@@ -2,7 +2,7 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-20 23:33:48
- * @LastEditTime: 2021-07-28 18:17:26
+ * @LastEditTime: 2021-07-28 21:45:37
  * @FilePath: /packages/utils/src/file/upload-download.ts
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
@@ -27,9 +27,10 @@ export const uploadFile = (multiple: boolean = false): Promise<FileList | null> 
         input.onchange = e => {
             resolve(input.files);
         };
-        document.body.append(input);
+        document.body.appendChild(input);
         input.click();
-        input.remove();
+        document.body.removeChild(input)
+        // input.remove();
     });
 
 /**
@@ -52,7 +53,8 @@ export const downLoadImage = (src: string): Promise<string> =>
             ctx.drawImage(image, 0, 0, image.width, image.height);
             resolve(canvas.toDataURL('image/png'));
         };
-        document.body.append(image);
+        document.body.appendChild(image);
         image.setAttribute('src', src);
-        image.remove();
+        document.body.removeChild(image);
+        // image.remove();
     });
