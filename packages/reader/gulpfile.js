@@ -2,7 +2,7 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-21 09:51:15
- * @LastEditTime: 2021-07-21 17:23:40
+ * @LastEditTime: 2021-07-28 18:05:09
  * @FilePath: /packages/reader/gulpfile.js
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
@@ -94,7 +94,7 @@ const task = series(clean, parallel(html, css, js), reload);
 const connect = done => {
     if (projectInfo.mode == 'development') {
         gulpConnect.server({
-            // host:'10.2.47.190',
+            host:'10.10.49.28',
             root: 'dist',
             port: 63999,
             livereload: true,

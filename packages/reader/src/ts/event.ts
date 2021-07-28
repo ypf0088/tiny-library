@@ -2,7 +2,7 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-21 12:37:26
- * @LastEditTime: 2021-07-22 16:54:54
+ * @LastEditTime: 2021-07-28 18:11:19
  * @FilePath: /packages/reader/src/ts/event.ts
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
@@ -13,56 +13,76 @@
 // 拖拽的dom节点
 // 绑定相关事件
 // 拖拽函数
+
+import { downLoadImage, dataURLToBlob, uploadFile, copyText } from '@tiny/utils';
 window.onload = () => {
-    console.log('加载完了么?');
-    
+
+    console.log('加载完了么?', document.designMode);
 
     // 定义绑定事件函数
-    function bindEvent(ele: any, eventType: string, handler: Function): void{
+    function bindEvent(ele: any, eventType: string, handler: Function): void {
         function getEventTarget(e: any) {
             e = window.event || e;
-            return e.srcElement || e.target; 
+            return e.srcElement || e.target;
         }
-        var _handler = function(e: Element) {
-            var _node = getEventTarget(e)
-            handler.bind(_node)(e)
-        }
-        ele = typeof ele ==='string' ? document.querySelector(ele) : ele;
-        if(ele.attachEvent) {
-            ele.attachEvent("on" + eventType, _handler);
-        } else if(ele.addEventListener) {
+        var _handler = function (e: Element) {
+            var _node = getEventTarget(e);
+            handler.bind(_node)(e);
+        };
+        ele = typeof ele === 'string' ? document.querySelector(ele) : ele;
+        if (ele.attachEvent) {
+            ele.attachEvent('on' + eventType, _handler);
+        } else if (ele.addEventListener) {
             ele.addEventListener(eventType, _handler, false);
         }
     }
 
     var dargBox = document.querySelector('.drag-source-box');
-    bindEvent(dargBox, 'drag', function(this: HTMLElement, e: Event) {
+    bindEvent(dargBox, 'drag', function (this: HTMLElement, e: Event) {
         // console.log(this, 'drag', '拖拽中')
     });
-    bindEvent(dargBox, 'dragstart', function(this: HTMLElement, e: Event) {
-        console.log(this === e.target, 'dragstart', '开始拖拽', e.target)
+    bindEvent(dargBox, 'dragstart', function (this: HTMLElement, e: Event) {
+        console.log(this === e.target, 'dragstart', '开始拖拽', e.target);
     });
-    bindEvent(dargBox, 'dragend', function(this: HTMLElement, e: Event) {
-        console.log(this, 'dragend', '拖拽结束')
+    bindEvent(dargBox, 'dragend', function (this: HTMLElement, e: Event) {
+        console.log(this, 'dragend', '拖拽结束');
     });
 
-    const dragTargetBox = dargBox // document.querySelector('.drag-target-box');
+    const dragTargetBox = dargBox; // document.querySelector('.drag-target-box');
 
-    bindEvent(dragTargetBox, 'dragenter', function(this: HTMLElement, e: Event) {
+    bindEvent(dragTargetBox, 'dragenter', function (this: HTMLElement, e: Event) {
         // e.preventDefault();
         // console.log(this, 'dragenter', '进入目标元素')
-    })
+    });
 
-    bindEvent(dragTargetBox, 'dragover', function(this: HTMLElement ,e: Event) {
+    bindEvent(dragTargetBox, 'dragover', function (this: HTMLElement, e: Event) {
         e.preventDefault();
         // console.log(this, 'dragover', '在目标元素中拖拽')
-    })
+    });
 
-    bindEvent(dragTargetBox, 'dragleave', function(this: HTMLElement, e: Event) {
-        console.log(this, 'dragleave', '拖放离开目标元素')
-    })
+    bindEvent(dragTargetBox, 'dragleave', function (this: HTMLElement, e: Event) {
+        console.log(this, 'dragleave', '拖放离开目标元素');
+    });
 
-    bindEvent(dragTargetBox, 'drop', function(this: HTMLElement, e: Event) {
-        console.log(this, 'drop', '拖放')
-    })
+    bindEvent(dragTargetBox, 'drop', function (this: HTMLElement, e: Event) {
+        console.log(this, 'drop', '拖放');
+    });
+
+    const downloadBtn: HTMLButtonElement = document.querySelector('#download') as HTMLButtonElement;
+
+    bindEvent(downloadBtn, 'click', async () => {
+        console.log('点击下载');
+        const files: FileList | null = await uploadFile();
+        console.log(files)
+        const dataURL: string = await downLoadImage(
+            'https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X2pwZy9lWENTUmp5TlljWnlNaE9nQ1pQSlhmQWliakZ1YklzTzdSd3VwdHBmeU9iVDBBNjFWZk5JWHJOSHM2eDY4OWliMndEUFBKTURjcW96RVhEd1J4cXBBUTN3LzY0MA?x-oss-process=image/format,png',
+        );
+        const file: Blob | null = dataURLToBlob(dataURL);
+        console.log(file, '文件');
+    });
+
+    const copyTextBtn: HTMLButtonElement = document.querySelector('#copy') as HTMLButtonElement;
+    bindEvent(copyTextBtn, 'click', () => {
+        copyText('hjskdflasjdfljsalkdjflasjldfjl')
+    });
 };
