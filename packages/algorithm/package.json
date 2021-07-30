@@ -2,6 +2,7 @@
   "name": "@tiny/algorithm",
   "version": "1.0.0",
   "main": "index.js",
+  "types": "dist/algorithm.d.ts",
   "bugs": {
       "url": "https://github.com/ypf0088/tiny-library/issues"
   },

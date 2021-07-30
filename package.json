@@ -17,10 +17,16 @@
         "reader:build": "tiny-reader mode:production"
     },
     "devDependencies": {
+        "@microsoft/api-extractor": "^7.18.4",
+        "@rollup/plugin-commonjs": "^19.0.2",
+        "@rollup/plugin-node-resolve": "^13.0.4",
         "@types/jest": "^26.0.24",
+        "chalk": "^4.1.1",
         "execa": "^5.1.1",
         "jest": "^27.0.6",
         "rollup": "^2.53.3",
+        "rollup-plugin-polyfill-node": "^0.7.0",
+        "rollup-plugin-terser": "^7.0.2",
         "rollup-plugin-typescript2": "^0.30.0",
         "stylelint": "^13.13.1",
         "stylelint-config-prettier": "^8.0.2",

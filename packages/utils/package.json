@@ -2,6 +2,7 @@
     "name": "@tiny/utils",
     "version": "1.0.0",
     "main": "index.js",
+    "types": "dist/utils.d.ts",
     "bugs": {
         "url": "https://github.com/ypf0088/tiny-library/issues"
     },
