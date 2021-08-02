@@ -11,6 +11,7 @@
 export * from './copy';
 export * from './file';
 export * from './throttle-debounce';
+export * from './lazyload';
 
 
 

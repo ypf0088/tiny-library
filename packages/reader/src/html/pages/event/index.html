@@ -2,7 +2,7 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-26 15:17:21
- * @LastEditTime: 2021-07-28 18:06:53
+ * @LastEditTime: 2021-08-02 11:23:46
  * @FilePath: /packages/reader/src/html/pages/event/index.html
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
@@ -27,4 +27,11 @@
 
     <button id="download">下载图片</button>
     <button id="copy">复制文本</button>
+    <script type="text/javascript">
+        function a(){
+            console.log(this)
+        }
+    </script>
+    <button onclick="a.bind('text')()">点击试试看</button>
+    <button id='computed'>过滤计算</button>
 </div>
