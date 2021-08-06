@@ -2,8 +2,8 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-26 08:46:34
- * @LastEditTime: 2021-07-26 09:01:31
- * @FilePath: /packages/utils/src/file/blob-file.ts
+ * @LastEditTime: 2021-08-06 15:28:37
+ * @FilePath: /packages/utils/src/file/blob.ts
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
  */
@@ -39,4 +39,5 @@ export const dataURLToBlob = (dataurl: string) => {
  * @param {string} fileName: 文件名
  * @return {*}
  */
-export const blobToFile = (blob: Blob, fileName: string): File => new File([blob], fileName);
+export const blobToFile = (blob: Blob, fileName: string): File =>
+    new File([blob], fileName);

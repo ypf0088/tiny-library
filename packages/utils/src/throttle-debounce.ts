@@ -2,30 +2,37 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-20 22:16:25
- * @LastEditTime: 2021-07-20 23:31:03
+ * @LastEditTime: 2021-08-06 11:09:58
  * @FilePath: /packages/utils/src/throttle-debounce.ts
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
  */
 
-export const debounce = (fn: Function, timeout: number = 500) => {
-    let timer: any = null;
-    return (...args: any[]) => {
+export function debounce<C, T extends unknown[]>(
+    fn: (this: C, ...args: T) => unknown,
+    interval: number = 200,
+) {
+    let timer: any;
+    return function (this: C, ...args: T) {
         clearTimeout(timer);
         timer = setTimeout(() => {
-            fn.apply(null, args);
-        }, timeout);
+            fn.call(this, ...args);
+        }, interval);
     };
-};
+}
 
-export const throttle = (fn: Function, timeout: number = 500) => {
+export function throttle<C, T extends unknown[]>(
+    fn: (this: C, ...args: T) => unknown,
+    interval: number = 200,
+) {
     let canRun: boolean = true;
-    return (...args: any[]) => {
-        if (!canRun) return;
-        canRun = false;
-        setTimeout(() => {
-            fn.apply(null, args);
+    return function (this: C, ...args: T): void {
+        if (!canRun) {
             canRun = true;
-        });
+            setTimeout(() => {
+                canRun = false;
+                fn.call(this, ...args); // this 报语法错误，先用 null
+            }, interval);
+        }
     };
-};
+}

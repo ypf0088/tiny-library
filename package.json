@@ -14,7 +14,8 @@
         "test": "jest",
         "test:c": "jest --coverage",
         "reader:run": "tiny-reader mode:development",
-        "reader:build": "tiny-reader mode:production"
+        "reader:build": "tiny-reader mode:production",
+        "code:dev": "cd packages/react-code-read; yarn dev"
     },
     "devDependencies": {
         "@microsoft/api-extractor": "^7.18.4",

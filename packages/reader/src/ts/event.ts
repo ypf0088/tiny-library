@@ -2,7 +2,7 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-21 12:37:26
- * @LastEditTime: 2021-08-02 11:37:38
+ * @LastEditTime: 2021-08-05 16:13:58
  * @FilePath: /packages/reader/src/ts/event.ts
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
@@ -14,7 +14,7 @@
 // 绑定相关事件
 // 拖拽函数
 
-import { downLoadImage, dataURLToBlob, uploadFile, copyText } from '@tiny/utils';
+import { downLoadImage, dataURLToBlob, uploadFile, copyText, captureImage } from '@tiny/utils';
 window.onload = () => {
     console.log('加载完了么?', document.designMode);
 
@@ -98,9 +98,15 @@ window.onload = () => {
                 map.set(it, 1);
             }
         }
+        toFile();
 
         return [...map].filter(([k, v]) => v <= 1).reduce((prev, next) => {
             return parseInt(prev) + parseInt(next[0])
         });
     });
+
+    async function toFile(){
+        const file = await captureImage('https://vd3.bdstatic.com/mda-ihtjyywiw2nky2de/sc/mda-ihtjyywiw2nky2de.mp4')
+        console.log(file)
+    }
 };

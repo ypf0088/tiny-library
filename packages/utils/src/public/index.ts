@@ -2,14 +2,15 @@
  * @Author: yourname
  * @LastEditors: Please set LastEditors
  * @Date: 2021-07-28 18:13:54
- * @LastEditTime: 2021-08-02 10:29:31
+ * @LastEditTime: 2021-08-06 15:28:57
  * @FilePath: /packages/utils/src/public/index.ts
  * @Description: file content
  * Copyright (C) 2021 yourname. All rights reserved.
  */
 
 import { hasOwn, isObject, isBoolean } from '@tiny/shared';
-export const hideDomCssText: string = 'postion: absolute;width: 0px;height: 0px;opacity: 0;z-index: -1;';
+export const hideDomCssText: string =
+    'postion: absolute;width: 0px;height: 0px;opacity: 0;z-index: -1;';
 
 interface extendedType {
     [key: string]: object;

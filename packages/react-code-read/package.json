@@ -1,0 +1,21 @@
+{
+    "name": "@tiny/react-code-read",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "dev": "parcel index.html"
+    },
+    "bugs": {
+        "url": "https://github.com/ypf0088/tiny-library/issues"
+    },
+    "homepage": "https://github.com/ypf0088/tiny-library/tree/master/packages/react-code-read#readme",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/react-dom": "^17.0.9",
+        "parcel-bundler": "^1.12.5"
+    },
+    "dependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    }
+}
