@@ -73,8 +73,6 @@
         "custom_string_obkoro1_copyright": "Copyright (C) ${now_year} yourname. All rights reserved."
     },
     "fileheader.cursorMode": {
-        "Author": "yourname",
-        "Date": "Do not edit",
         "description": "",
         "param": "",
         "return": ""
